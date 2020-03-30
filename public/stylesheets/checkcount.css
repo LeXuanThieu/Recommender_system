@@ -1,0 +1,85 @@
+.title-check-count
+{
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.check-box-vt
+{
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc4c4;
+    position: relative;
+}
+.check-box-vt::before
+{
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: #007eba;
+    border-radius: 10px;
+    top: 23px;
+}
+.content-vt
+{
+    margin-left: 25px;
+}
+.fee-vt
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.product-thubnail
+{   
+    position: relative;
+}
+.product-thumbnail__quantity
+{
+    background-color: #97a8ff;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 17px;
+    border-radius: 10px;
+    top: 0px;
+    right: 0px;
+}
+.product .product-text,.product-price
+{
+    color: #ff8d00
+
+}
+
+.product .product-price
+{
+    width: 26%;
+}
+
+.order-summary
+{
+    background-color: #ffffff;
+    padding: 10px;
+    line-height: 40px;
+    border-top: 1px solid #b5b5b5;
+    border-bottom: 1px solid #b5b5b5;
+    margin-bottom: 20px;
+}
+.total-line-name
+{
+    font-weight: 500;
+}
+.total-line-subprice
+{
+    float: right;
+}
+
+.btn-dh
+{
+    text-transform: uppercase;
+    font-weight: 500;
+}

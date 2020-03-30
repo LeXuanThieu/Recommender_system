@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title><%= info_shop.Ten_shop %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link rel="stylesheet" href="stylesheets/hidden_md-slide_nav-header_top-header_middle.css">
+    <link rel="stylesheet" href="stylesheets/danh-muc-san-pham.css">
+    <link rel="stylesheet" href="stylesheets/nav-bar-item.css">
+    <link rel="stylesheet" href="stylesheets/phan_header_navber_conlai.css">
+    <link rel="stylesheet" href="stylesheets/thanhdieuhuong.css">
+    <% if(validate_data){ %> 
+        <% var soluongsanpham=count_sp[0]['count(*)'] %> 
+    <% if(soluongsanpham>0){ %>
+        <link rel="stylesheet" href="stylesheets/showalldanhmuc.css">
+        <link rel="stylesheet" href="stylesheets/cac_san_pham.css">
+        <link rel="stylesheet" href="stylesheets/sanphamthat.css">
+    <% } %> 
+    <% } %> 
+  </head>
+  <body>
+    <!--phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <% include partials-layout/hidden_md-slide_nav-header_top-header_middle %>
+    <!--kết thúc phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <!--phần header-nav-->
+    <div class="header-navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <!--phần danh mục sản phẩm-->
+                    <% include partials-layout/danh-muc-san-pham %>
+                    <!--kết thúc phần danh mục sản phẩm-->
+                </div>
+
+                <div class="col-lg-9">
+                    <!--phần navbar-item-->
+                    <% include partials-layout/nav-bar-item %>
+                    <!--kết thúc phần navbar-item-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần header-nav-->
+
+    <!--phần thanh hiển thị điều hướng-->
+    <section class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--nội dung thanh điều hướng-->
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <span>Trang chủ</span>
+                            <span><i class="fa">/</i></span>
+                        </li>
+
+                        <li>
+                            <% if(dieuhuong=='Tk'){%>
+                                <span class="sp">Trang tìm kiếm </span>
+                            <% }else{%>
+                                <span class="sp"><%= title_danhmuc[0].Ten_tieu_de %> </span>
+                            <%} %> 
+                            
+                        </li>
+                    </ul>
+                    <!-- kết thúc nội dung thanh điều hướng-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--kết thúc phần thanh hiển thị điều hướng-->
+    <% if(validate_data){ %> 
+        <% if(soluongsanpham>0){ %>
+            <!--nội dung toàn bộ sản phẩm-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 aside_filter">
+
+                        <!--danh mục sản phẩm-->
+                        <aside class="aside-item">
+                            <!--tiêu đề-->
+                            <div class="aside-title">
+                                THƯƠNG HIỆU
+                            </div>
+                            
+                            <div class="row">
+
+                                <% for(let i=0;i<ds_thuonghieu.length;i++){%>
+                                    <% 
+                                        let tenthuonghieu= ds_thuonghieu[i].ten_thuong_hieu;
+                                        let id_thuonghieu= ds_thuonghieu[i].id;
+                                    %> 
+                                    <div class="col-lg-6 mb-15">
+                                        <button class="btn btn_thuonghieu" data-idthuonghieu="<%= id_thuonghieu %>"><%= tenthuonghieu %></button>
+                                    </div>
+                                <% } %> 
+                                
+                            </div>
+                        </aside>
+                        <!--kết thúc danh mục sản phẩm-->
+
+                        <!--tìm kiếm theo giá tiền-->
+                        <aside class="aside-item">
+                            <!--tiêu đề-->
+                            <div class="aside-title">
+                                GIÁ SẢN PHẨM
+                            </div>
+                            <!--kết thúc tiêu đề-->
+                            <div class="aside-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="duoi1tr" name="check_price" data-min="min" data-max="1000000">
+                                            <label class="custom-control-label" for="duoi1tr">Giá dưới 1.000.000đ</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="tu1trden2tr" name="check_price" data-min="1000000" data-max="2000000">
+                                            <label class="custom-control-label" for="tu1trden2tr">1.000.000đ-2.000.000đ</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="tu2trden5tr" name="check_price" data-min="2000000" data-max="5000000">
+                                            <label class="custom-control-label" for="tu2trden5tr">2.000.000đ-5.000.000đ</label>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="col-lg-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="tren5tr" name="check_price" data-min="5000000" data-max="max">
+                                            <label class="custom-control-label" for="tren5tr">Giá trên 5.000.000đ</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </aside>
+                        <div id="alert_info" class="row">
+                            
+                        </div>
+                        <!--kết thúc tìm kiếm theo giá tiền-->
+                        <div class="row">
+                            <div style="margin:10px auto" class="btn-group">
+                                <button type="button" class="btn btn-danger" onclick="Xoaboloc()">Xóa bộ lọc</button>
+                                <button type="button" class="btn btn-warning" onclick="Locsanpham()">Lọc sản phẩm</button>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+
+
+                    <div class="col-md-12 col-lg-9 col-sm-12 col-xs-12">
+                        <section class="collection">
+                            <div class="text-sm-left">
+                                <h1 class="title-head margin-top-0">Phụ kiện hot</h1>
+                            </div>
+
+                            <span class="title-sort">Sắp xếp:</span>
+                            <!--phần sắp xếp-->
+                            <div class="category-products">
+                                <div class="dropdown-right">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                    Thứ tự
+                                    </button>
+                                    <div class="dropdown-menu menu-inner">
+                                    <a class="dropdown-item sub-menu-inner" data-order="t-asc" href="javascript:;">Từ A->Z</a>
+                                    <a class="dropdown-item sub-menu-inner" data-order="t-desc" href="javascript:;">Từ Z->A</a>
+                                    <a class="dropdown-item sub-menu-inner" data-order="g-asc" href="javascript:;">Giá tăng dần</a>
+                                    <a class="dropdown-item sub-menu-inner" data-order="g-desc" href="javascript:;">Giá giảm dần</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--kết thúc phần sắp xếp-->
+                        </section>
+                        
+                        <div id="render_html">
+                            <div id="render_sp" class="row">
+
+                                <% for(let i=0;i<data_sanpham.length;i++){%>
+                                    <% 
+                                        let linksanpham='/chitietsanpham?id='+data_sanpham[i].id_sanpham;
+                                        let tensanpham=data_sanpham[i].ten_san_pham;
+                                        let hinhanh=data_sanpham[i].hinhanh;    
+                                        let gia=data_sanpham[i].gia;
+                                        let giamoi=data_sanpham[i].giamoi;
+                                        let rating_tbsp=data_sanpham[i].rating_tbsp;
+                                    %>
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6">
+                                        <div style="margin-top:20px" class="product-box"   title='<%= tensanpham %>'>
+                                            <div class="product-thumbnail">
+                                                <% if(giamoi!=0){%>
+                                                    <% 
+                                                        let phantramkhuyenmai=(giamoi/gia)*100;
+                                                        phantramkhuyenmai=100-phantramkhuyenmai;                                                        
+                                                    %> 
+                                                    <span class="sale-off"><%= phantramkhuyenmai %>%</span>
+                                                <% } %> 
+    
+                                                <a href=<%= linksanpham %>>
+                                                     <img src=<%= hinhanh %> alt="">
+                                                </a>
+                                            </div>
+                                    
+                                            <div class="product-info">
+                                                <h3 class="product-name" >
+                                                    <a href=<%= linksanpham %>>
+                                                        <%= tensanpham %>
+                                                    </a>
+                                                </h3>
+                                                <div class="reviews-product-grid">
+                                                    <% let dem=0 %> 
+                                                    <% for(let j=1;j<=Math.floor(rating_tbsp);j++){%>
+                                                        <i style="color: #ff5622;" class="fa fa-star"></i>
+                                                        <% dem++ %>
+                                                    <% } %>  
+                                                    <% if(rating_tbsp-Math.floor(rating_tbsp)>=0.5){%>
+                                                        <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                                                        <% dem++ %>
+                                                    <% } %> 
+                                                    <% for(let k=1;k<=5-dem;k++){%>
+                                                        <i style="color: #ff5622;" class="fa fa-star-o"></i>
+                                                    <%} %> 
+                                                </div>
+                                                
+                                                <% if(giamoi==0){%>
+                                                    <div class="price-box">
+                                                        <span class="price product-price">
+                                                            <%= gia.toLocaleString() %>Đ
+                                                        </span>
+                                                    </div>
+                                                <% }else{%>
+                                                    <div class="price-box">
+                                                        <span class="price product-price">
+                                                            <%= giamoi.toLocaleString() %>Đ
+                                                        </span>
+                                        
+                                                        <span class="price product-price-old">
+                                                            <%= gia.toLocaleString() %>Đ
+                                                        </span>
+                                                    </div>
+                                                <% } %> 
+                                                
+                                            </div>
+                                        </div>  
+                                    </div>
+                                        <!--kết thúc các sản phẩm-->
+                                    
+                                <% } %> 
+                                <!--các sản phẩm-->
+                                
+                            </div>
+    
+                            <% if(Math.ceil(soluongsanpham/12)>1){%>
+                                <div class="pagination-wrap" data-num="<%= Math.ceil(soluongsanpham/12) %>">
+                                    
+                                </div>
+                            <% } %>
+                        </div>
+                        
+                    </div>
+                </div>               
+            </div>
+        <% }else{%>
+            <div class="container">
+                <div style="color: #ff5622;font-weight: 700;">KHÔNG TÌM THẤY BẤT KỲ KẾT QUẢ NÀO VỚI TỪ KHÓA TRÊN.</div>
+            </div>
+        <%}%> 
+        <% }else{ %> 
+            <div class="container">
+                <h2 style="color: #ff5622;">Nhập từ khóa để tìm kiếm sản phẩm</h2>
+            </div>
+    <% } %> 
+
+  <% include partials-layout/footer %>
+  <script src="javascripts/mobile.js"></script>
+  <% if(validate_data){ %> 
+    <% if(Math.ceil(soluongsanpham/12)>1){%>
+        <script src="javascripts/pagination.js"></script>
+    <% } %> 
+    <% if(soluongsanpham>0){ %>
+        <script src="javascripts/sanpham_js.js"></script>
+    <%}%>
+    <% } %>
+  </body>
+</html>

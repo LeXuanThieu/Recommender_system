@@ -1,0 +1,74 @@
+
+
+    <% for(let i=0;i<data_sanpham.length;i++){%>
+        <% 
+            let linksanpham='/chitietsanpham?id='+data_sanpham[i].id_sanpham;
+            let tensanpham=data_sanpham[i].ten_san_pham;
+            let hinhanh=data_sanpham[i].hinhanh;    
+            let gia=data_sanpham[i].gia;
+            let giamoi=data_sanpham[i].giamoi;
+            let rating_tbsp=data_sanpham[i].rating_tbsp;
+        %>
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6">
+            <div style="margin-top:20px" class="product-box"   title='<%= tensanpham %>'>
+                <div class="product-thumbnail">
+                    <% if(giamoi!=0){%>
+                        <% 
+                            let phantramkhuyenmai=(giamoi/gia)*100;
+                            phantramkhuyenmai=100-phantramkhuyenmai;                                                        
+                        %> 
+                        <span class="sale-off"><%= phantramkhuyenmai %>%</span>
+                    <% } %> 
+
+                    <a href=<%= linksanpham %>>
+                         <img src=<%= hinhanh %> alt="">
+                    </a>
+                </div>
+        
+                <div class="product-info">
+                    <h3 class="product-name" >
+                        <a href=<%= linksanpham %>>
+                            <%= tensanpham %>
+                        </a>
+                    </h3>
+                    <div class="reviews-product-grid">
+                        <% let dem=0 %> 
+                        <% for(let j=1;j<=Math.floor(rating_tbsp);j++){%>
+                            <i style="color: #ff5622;" class="fa fa-star"></i>
+                            <% dem++ %>
+                        <% } %>  
+                        <% if(rating_tbsp-Math.floor(rating_tbsp)>=0.5){%>
+                            <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                            <% dem++ %>
+                        <% } %> 
+                        <% for(let k=1;k<=5-dem;k++){%>
+                            <i style="color: #ff5622;" class="fa fa-star-o"></i>
+                        <%} %>   
+                    </div>
+                    
+                    <% if(giamoi==0){%>
+                        <div class="price-box">
+                            <span class="price product-price">
+                                <%= gia.toLocaleString() %>Đ
+                            </span>
+                        </div>
+                    <% }else{%>
+                        <div class="price-box">
+                            <span class="price product-price">
+                                <%= giamoi.toLocaleString() %>Đ
+                            </span>
+            
+                            <span class="price product-price-old">
+                                <%= gia.toLocaleString() %>Đ
+                            </span>
+                        </div>
+                    <% } %> 
+                    
+                </div>
+            </div>  
+        </div>
+            <!--kết thúc các sản phẩm-->
+        
+    <% } %> 
+    <!--các sản phẩm-->
+    

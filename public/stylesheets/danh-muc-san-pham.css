@@ -1,0 +1,128 @@
+/*phần nút button danh mục sản phẩm*/
+
+.block-title-button
+{
+    cursor: pointer;
+    margin: 0;
+    padding: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background: #d7102c;
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 20px;
+}
+.verticalMenu-toggle
+{
+    top: 25px;
+}
+.verticalMenu-toggle,.verticalMenu-toggle::before,.verticalMenu-toggle::after
+{
+    background: #ffffff;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    width: 15px;
+}
+.verticalMenu-toggle::before
+{
+    top: 4px;
+}
+.verticalMenu-toggle::after
+{
+    bottom: 4px;
+}
+
+
+.verticalMenu-text
+{
+    padding-left: 25px;
+}
+.vertical-menu
+{
+    background-color: #ffffff;
+}
+/*kết thúc phần nút button danh mục sản phẩm*/
+
+
+/*phần danh sách các danh mục*/
+/*cha*/
+.block-content
+{
+    position: absolute;
+    z-index: 9;
+
+}
+
+@media(min-width:1200px)
+{
+    .block-content
+    {
+        width: 89.5%;
+    }
+}
+@media(max-width:1199px)
+{
+    .block-content
+    {
+        width: 87.5%;
+    }
+}
+@media(max-width:991px)
+{
+    .block-content
+    {
+        display: none;
+        position: static;
+        width: 100%;
+    }
+}
+.nav-verticalmenu
+{
+    list-style-type: none;
+}
+.nav-verticalmenu .vermenu-option
+{
+    position: relative;
+}
+.nav-verticalmenu .vermenu-option:hover
+{
+    background-color: #ff5622;
+
+}
+.nav-verticalmenu .vermenu-option:hover .link-menu-nav
+{
+    color: #ffffff;
+}
+.angle-right
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.vermenu-option .fa
+{
+    font-size: 20px;
+    min-width: 20px;
+    text-align: center;
+}
+.link-menu-nav{
+    color: #555;
+    display: block;
+    width: 90%;
+    padding: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.vermenu-option:hover{
+    color: #ffffff;
+    background-color: #ff5622;
+}
+
+
+/*hết phần danh sách các danh mục*/

@@ -1,0 +1,256 @@
+
+
+
+/*phần sản phẩm*/
+.awe-section
+{
+    margin-top: 10px;
+}
+
+.li-section-title {
+    border-bottom: 1px solid #e1e1e1;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.li-section-title > h2 {
+    float: left;
+    font-size: 20px;
+    color: #242424;
+    font-weight: 500;
+    letter-spacing: -.025em;
+    padding: 0;
+    line-height: 1;
+    padding-bottom: 13px;
+    z-index: 0;
+    margin-top: 13px;
+}
+.li-section-title > h2 > span {
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+}
+.li-section-title > h2 > span::before {
+    position: absolute;
+    content: "";
+    background:#ff5622;
+    opacity: 1;
+    left: 0;
+    right: 0;
+    bottom: -22px;
+    height: 1px;
+}
+
+
+/* product box*/
+.product-box
+{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+    margin: 10px;
+}
+.product-box .product-thumbnail
+{
+    position: relative;
+}
+.product-box .sale-off {
+    background: #ffba00;
+    font-size: 11px;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    text-align: center;
+    color: #fff;
+    padding: 0px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 100%;
+    padding: 0;
+}
+.product-box .product-thumbnail a
+{
+    position: relative;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+}
+.product-box .product-thumbnail:hover a:before {
+    opacity: .2;
+    background: #000;
+}
+.product-box .product-thumbnail>a:before {
+    content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    transition: 0.2s;
+    left: 0;
+    z-index: 9;
+    background: #fff;
+}
+.product-box .product-thumbnail a img
+{
+    width: 100%;
+}
+.product-box .product-info
+{
+    padding: 0 15px 15px;
+    background-color: #ffffff;
+}
+.product-box .product-name {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    max-height: 45px;
+    min-height: 45px;
+}
+.product-name a{
+    color: #555;
+}
+.product-box .product-price {
+    color: #ff5622;
+    font-size: 16px;
+    line-height: 26px;
+    display: inline-block;
+    font-weight: 700;
+    margin-right: 0px;
+}
+.product-box .product-price-old {
+    text-decoration: line-through;
+    font-size: 13px;
+    color: #959595;
+    display: inline-block;
+    line-height: 20px;
+    font-weight: 400;
+    margin-right: 0px;
+}
+
+
+.banner-sp img
+{
+    width: 540px;
+    margin-top: 20px;
+}
+/*phần css tin tức*/
+
+.awe-section-tt
+{
+    background-color: #ffffff;
+    padding-bottom: 30px;
+}
+.awe-section-tt .aside-title
+{
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    padding-top: 25px;
+    margin-top: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+.aside-title::before
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    margin: 0px auto;
+    background-color: #ff5622ed;
+}
+.title_tt_name a
+{
+    color: #363636;
+    font-weight: 700;
+    font-size: 18px;
+}
+.title_tt_name a:hover
+{
+    color: #ff5622ed;
+}
+.tt-item
+{
+    padding: 5px;
+}
+.tt-item a
+{
+    display: block;
+    position: relative;
+}
+.tt-item .tt-item-img::before:hover
+{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: gray;
+    opacity: 0.5;
+}
+.link-tt-a
+{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+.btn-tt
+{
+    background-color: #ff5622ed;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+/*phần service*/
+.section-srv
+{
+    background-color: white;
+    border-top: 1px solid #a8a8a8;
+}
+.serviver-ct
+{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.img_srv
+{
+    width: 60px;
+    height: 45px;
+}
+.content_srv
+{
+    margin-left: 5px;
+}
+.content_srv .title_srv
+{
+    font-size: 19px;
+    font-weight: 500;
+}
+.content_srv .content_service
+{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+/*kết thúc phần service*/

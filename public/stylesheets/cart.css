@@ -1,0 +1,85 @@
+
+/*phần các sản phẩm trong giỏ hàng*/
+.oocommerce-cart-form__contents
+{
+    background-color: #ffffff;
+}
+
+.remove-product .remove
+{
+    font-size: 1.5em;
+    height: 1em;
+    width: 1em;
+    text-align: center;
+    line-height: 19px;
+    border-radius: 100%;
+    color: red!important;
+    text-decoration: none;
+    font-weight: 700;
+    border: 0;
+    cursor: pointer;
+}
+.remove-product .remove:hover {
+    color: #fff!important;
+    background: red;
+}
+
+.image-product img
+{
+    width: 80px;
+    display: inline-block;
+}
+.product-margin-20-0
+{
+    margin: 20px 0px;
+    color: #ff5622;
+}
+@media(max-width:991px)
+{
+    .oocommerce-cart-form__contents thead tr th
+    {
+        display: none;
+    }
+
+    .woocommerce-cart-form__cart-item td
+    {
+        display:block;
+        text-align: right;
+        margin: auto auto;
+    }
+    .woocommerce-cart-form__cart-item .reponsive_mb::before
+    {
+        content: attr(data-title) ": ";
+        font-weight: 700;
+        float: left;
+        margin: 20px auto;
+    }
+}
+/*kết thúc phần các sản phẩm trong giỏ hàng*/
+
+/*phần tổng giá các sản phẩm trong giỏ hàng*/
+.cart-collaterals
+{
+    width: 100%;
+}
+.cart-collaterals .cart-totals
+{
+    float: right;
+    width: 48%;
+}
+.cart-totals h2
+{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0px;
+    line-height: 1.4;
+}
+@media(max-width:991px)
+{
+    .cart-totals
+    {
+        width: 100% !important;
+    }
+}
+
+/*kết thúc phần tổng giá các sản phẩm trong giỏ hàng*/

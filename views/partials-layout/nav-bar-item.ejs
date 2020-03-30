@@ -1,0 +1,16 @@
+<!--phần navbar-item-->
+<ul class="item-big">
+
+    <% for(let i=0;i< info_navbar.length;i++){ %>
+        <% if(info_navbar[i].vitri==1){%>
+            <% let link=info_navbar[i].link_url  %> 
+
+            <li class="nav-item-header">
+                <a href=<%= link %>><%= info_navbar[i].Name_navbar %></a>
+    
+            </li>
+        <% } %> 
+    <% } %> 
+
+</ul>
+<!--kết thúc phần navbar-item-->

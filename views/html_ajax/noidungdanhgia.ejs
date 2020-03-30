@@ -1,0 +1,43 @@
+<% 
+let hovaten=noidungdanhgia[0].hovaten;
+let tieude=noidungdanhgia[0].tieude;
+let noidung=noidungdanhgia[0].noidung;
+let ngaythang=noidungdanhgia[0].ngaythang;
+let rating=noidungdanhgia[0].rating;
+%> 
+
+
+<div class="media p-3 product-review">
+    <img src="images/user.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:20px;">
+    <div class="media-body">
+        <div class="product-review-name">
+            <%= hovaten %> 
+        </div>
+        <span class="product-review-star">
+            <% let dem=0 %> 
+            <% for(let j=1;j<=Math.floor(rating);j++){%>
+                <i style="color: #ff5622;" class="fa fa-star"></i>
+                <% dem++ %>
+            <% } %>  
+            <% if(rating-Math.floor(rating)>=0.5){%>
+                <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                <% dem++ %>
+            <% } %> 
+            <% for(let k=1;k<=5-dem;k++){%>
+                <i style="color: #ff5622;" class="fa fa-star-o"></i>
+            <%} %>  
+        </span>
+        <span class="product-review-time">
+            <%= ngaythang %> 
+        </span>
+
+        <div class="product-review-header-title">
+            <%= tieude %> 
+        </div>
+
+        <div class="product-review-header-content">
+            <%= noidung %> 
+        </div>
+    </div>
+
+</div>

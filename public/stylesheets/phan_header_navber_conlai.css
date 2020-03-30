@@ -1,0 +1,42 @@
+/* phần header navbar*/
+.header-navbar:before {
+    content: "";
+    position: absolute;
+    top: 119px;
+    background: #ff5622;
+    z-index: -1;
+    width: 100%;
+    height: 50px;
+}
+@media (max-width:1200px)
+{
+    .header-navbar:before
+    {
+        height: 90px;
+    }
+
+}
+@media (max-width: 991px)
+{
+    .header-navbar:before
+    {
+        height: 150px;
+    }
+}
+
+@media (max-width: 767px)
+{
+    .header-navbar:before
+    {
+        height: 190px;
+    }
+}
+
+@media (max-width: 576px)
+{
+    .header-navbar:before
+    {
+        height: 110px;
+    }
+}
+/*kết thúc phần header-nav*/

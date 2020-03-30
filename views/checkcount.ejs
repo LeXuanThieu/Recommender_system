@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= info_shop.Ten_shop %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link rel="stylesheet" href="stylesheets/hidden_md-slide_nav-header_top-header_middle.css">
+    <link rel="stylesheet" href="stylesheets/danh-muc-san-pham.css">
+    <link rel="stylesheet" href="stylesheets/nav-bar-item.css">
+    <link rel="stylesheet" href="stylesheets/phan_header_navber_conlai.css">
+    <link rel="stylesheet" href="stylesheets/thanhdieuhuong.css">
+    <link rel="stylesheet" href="stylesheets/checkcount.css">
+  </head>
+  <body>
+ 
+    <!--phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <% include partials-layout/hidden_md-slide_nav-header_top-header_middle %>
+    <!--kết thúc phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <!--phần header-nav-->
+    <div class="header-navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <!--phần danh mục sản phẩm-->
+                    <% include partials-layout/danh-muc-san-pham %>
+                    <!--kết thúc phần danh mục sản phẩm-->
+                </div>
+
+                <div class="col-lg-9">
+                    <!--phần navbar-item-->
+                    <% include partials-layout/nav-bar-item %>
+                    <!--kết thúc phần navbar-item-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần header-nav-->
+
+    <!--phần thanh hiển thị điều hướng-->
+    <section class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--nội dung thanh điều hướng-->
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <span>Trang chủ</span>
+                            <span><i class="fa">/</i></span>
+                        </li>
+
+                        <li>
+                            <span class="sp">Thanh toán </span>
+                        </li>
+                    </ul>
+                    <!-- kết thúc nội dung thanh điều hướng-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--kết thúc phần thanh hiển thị điều hướng-->
+    <form action="" method="post">
+        <!--phần thanh toán-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="title-check-count">
+                    Thông tin mua hàng
+                </div>
+               
+                    <div class="form-group">
+                        <input name='email' type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="hovaten" type="text" class="form-control" id="hoten" placeholder="Họ và Tên">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="sodienthoai" type="text" class="form-control" id="hoten" placeholder="Số điện thoại">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="diachi" type="text" class="form-control" id="hoten" placeholder="Địa chỉ">
+                    </div>
+
+                    <div class="form-group">
+                        <select name="tinh" class="form-control" id="tinhthanh">
+                          <option selected disabled>--Chọn tỉnh thành--</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select name="huyen" class="form-control" id="huyen">
+                          <option selected disabled>--Chọn quận huyện--</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="ghichu" class="form-control" rows="5" id="comment" placeholder="Ghi chú" ></textarea>
+                    </div>
+
+                <div class="title-check-count">
+                    Vận chuyển
+                </div>
+                <div class="check-box-vt">
+                    <div class="content-vt">Giao hàng tận nơi</div>
+                    <div class="fee-vt">
+                        FREE
+                    </div>
+                </div>
+
+                <div style="margin-top:10px" class="title-check-count">
+                    Thanh toán khi giao hàng
+                </div>
+                <div class="check-box-vt">
+                    <div class="content-vt">Thanh toán khi giao hàng</div>
+                  </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="title-check-count">
+                    Đơn hàng (<%= count[0]['tongsoluong'] %>  sản phẩm)
+                </div>
+
+
+                <table style="background-color: #ffffff" class="table">
+                    <tbody>
+                        <% let tongtoanbosanpham=0 %> 
+                    <% for(let i=0;i<listdata.length;i++){%>
+                        <% 
+                            let tensanpham=listdata[i].ten_san_pham;
+                            let hinhanh=listdata[i].hinhanh;
+                            let gia=listdata[i].gia;
+                            let giamoi=listdata[i].giamoi;
+                            let soluongmua=listdata[i].soluongmua;
+                            let tonggiatungsanpham;
+
+                            if(giamoi>0)
+                            {
+                                tonggiatungsanpham=giamoi*soluongmua;
+                            }
+                            else
+                            {
+                                tonggiatungsanpham=gia*soluongmua;
+                            }
+                            tongtoanbosanpham+=tonggiatungsanpham;
+                        %>
+                            <tr class="product">
+                                <td class="product-info-vt">
+                                    <div class="product-thubnail">
+                                        <img class="img-thumbnail" style="widows: 60px;height:60px" src="<%= hinhanh %> " alt="">
+                                        <div class="product-thumbnail__quantity">
+                                            <%= soluongmua %> 
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="product-text"><%= tensanpham %> </td>
+                                <td class="product-price"><%= tonggiatungsanpham.toLocaleString() %> VNĐ </td>
+                            </tr>
+                    <%} %> 
+                        </tbody>
+                    </table>
+
+
+                
+
+                <div class="order-summary">
+                    <div class="total-line-subtotal">
+                        <span class="total-line-name">
+                            Tạm tính
+                        </span>
+                        <span class="total-line-subprice">
+                            <%= tongtoanbosanpham.toLocaleString()%>  VNĐ 
+                        </span>
+                    </div>
+                    <div class="total-line-shipping">
+                        <span class="total-line-name">
+                            Phí vận chuyển
+                        </span>
+                    </div>
+
+                    <div class="total-line-total">
+                        <span class="total-line-name">
+                            Tổng cộng
+                        </span>
+                        <span class="total-line-subprice">
+                            <%= tongtoanbosanpham.toLocaleString()%>  VNĐ 
+                        </span>
+                    </div>
+                    
+                </div>
+
+                <input type="submit" class="btn btn-primary btn-dh" value="Đặt hàng">
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần thanh toán-->
+
+    </form>
+    
+  <% include partials-layout/footer %>
+  <script src="javascripts/mobile.js"></script>
+  <script src="javascripts/checkcount.js"></script>
+  </body>
+</html>

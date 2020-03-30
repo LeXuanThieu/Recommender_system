@@ -1,0 +1,55 @@
+/*phần danh mục tin tức*/
+#dm-tt
+{
+    background-color: #9c9c9c;
+    font-size: 25px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.list-dmtt
+{
+    margin-bottom: 20px;
+}
+.dm-childent
+{
+    padding: 5px;
+    font-size: 20px;
+    background-color: #e0e0e0;
+    font-weight: 500;
+    cursor: pointer;
+}
+/*kết thúc phần danh mục tin tức*/
+.news
+{
+    background-color: white;
+    margin-bottom: 10px;
+    min-height: 170px;
+    padding: 5px;
+}
+.img-tt
+{
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.tieude-tt a{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+}
+.tieude-tt a:hover{
+    color: #ff5622ed;
+}
+.content-tt
+{
+    font-size: 16px;
+    font-family: sans-serif;
+}
+@media (max-width:991px)
+{
+    #list_dm
+    {
+        display: none;
+    }
+
+}

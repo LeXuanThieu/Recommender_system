@@ -1,0 +1,60 @@
+<div class="block-vertical-menu">
+    <!--phần nút button danh mục sản phẩm-->
+    <div class="block-title-button">
+        <span class="verticalMenu-toggle"></span>
+
+        <span class="verticalMenu-text">DANH MỤC SẢN PHẨM</span>
+    </div>
+    <!--kết thúc phần nút button danh mục sản phẩm-->
+
+    <!--phần danh sách các danh mục-->
+    <div class="block-content">
+        <div class="vertical-menu">
+            <ul class="nav-verticalmenu">
+                    <!--danh mục cha-1-->
+                <% for(let i=0;i<danhmuc_sp.length;i++){ %>
+                    <li class="vermenu-option">
+                        <% 
+                            let tieude=danhmuc_sp[i].Ten_tieu_de;
+                            let id=danhmuc_sp[i].id;
+                            let link='/sanpham?id='+id;    
+                            
+                        %> 
+                        <a class="link-menu-nav" href=<%= link %> >
+                            <span class="menu-icon-text">
+                                <span class="menu-title"><%= tieude %> </span>
+                            </span>
+                            <!--<i class="fa fa-angle-right angle-right"></i>-->
+                        </a>
+                    </li>
+                <% } %> 
+                    
+                    <!--kết thúc danh mục cha-1-->
+
+                    <!--phần danh mục con-1--
+                    <div class="dropdown-menu-inner">
+                        <ul>
+                            <li class="sub-vermegamenu">
+                                <a href="">Áo nam</a>
+                            </li>
+
+                            <li class="sub-vermegamenu">
+                                <a href="">Quần nam</a>
+                            </li>
+
+                            <li class="sub-vermegamenu">
+                                <a href="">Giày nam</a>
+                            </li>
+
+                            <li class="sub-vermegamenu">
+                                <a href="">Phụ kiện nam</a>
+                            </li>
+                        </ul>
+                    </div>
+                    kết thúc phần danh mục con-1-->
+            </ul>
+        </div>
+    </div>
+    <!--kết thúc phần các danh mục-->
+</div>
+

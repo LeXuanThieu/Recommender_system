@@ -1,0 +1,135 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('recommender-nodejs:server');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+  //craw_data();
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
+var T=require('../crawl_tintuc');
+
+function craw_data()
+{
+  console.log('Bắt đầu lấy tin tức')
+  var dem=0;
+  setInterval(function(){
+    if(dem==0)
+    {
+      console.log('lấy tin tức công nghệ')
+      T.LayTinTuc('cong-nghe',1);
+      dem++;
+    }
+    else if(dem==1)
+    {
+      console.log('lấy tin tức thế giới')
+      T.LayTinTuc('the-gioi',2);
+      dem++;
+    }
+    else if(dem==2)
+    {
+      console.log('lấy tin tức Thời sự')
+      T.LayTinTuc('thoi-su',3);
+      dem++;
+    }
+    else if(dem==3)
+    {
+      console.log('lấy tin tức Giáo dục')
+      T.LayTinTuc('giao-duc',4);
+      dem++;
+    }
+    else if(dem==4)
+    {
+      console.log('lấy tin tức pháp luật')
+      T.LayTinTuc('phap-luat',5);
+      dem++;
+    }
+    else if(dem==5)
+    {
+      console.log('reset dem=0');
+      dem=0;
+    }
+  },1000000)
+}

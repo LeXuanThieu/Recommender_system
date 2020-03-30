@@ -1,0 +1,28 @@
+<% for(let i=0;i<list_tintuc.length;i++){%>
+    <% 
+        let id=list_tintuc[i].id;
+        let linktintuc='/tin-tuc?id='+id;
+        let tieude=list_tintuc[i].tieude;
+        let gioithieu=list_tintuc[i].gioithieu;
+        let hinhanh=list_tintuc[i].hinhanh;
+        let thoigian=list_tintuc[i].thoigian; 
+    %> 
+    <div class="news">
+        <div class="item-tt">
+            <a class="img-tt" href="<%= linktintuc %>">
+                <img style="widows: 240px;height:160px" src="<%= hinhanh %>" alt="<%= tieude %>">
+            </a>
+            <div class="d-ib">
+                <div class="tieude-tt">
+                    <a href="<%= linktintuc %>"><%= tieude %> </a>
+                </div>
+                <div class="time-tt">
+                    <%= thoigian %> 
+                </div>
+                <div class="content-tt">
+                    <%= gioithieu %>   
+                </div>
+            </div>
+        </div>
+    </div>
+<%} %> 

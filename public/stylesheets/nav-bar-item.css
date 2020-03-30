@@ -1,0 +1,20 @@
+/*phần navbar-item*/
+.item-big
+{
+    display: flex;
+}
+.nav-item-header a
+{
+    display: block;
+    padding: 13px 35px 13px 35px;
+    background-color: #ff5622;
+    color: #ffff;
+}
+@media (max-width: 991px)
+{
+    .item-big
+    {
+        display: none;
+    }
+}
+/*kết thúc phần navbar-item*/

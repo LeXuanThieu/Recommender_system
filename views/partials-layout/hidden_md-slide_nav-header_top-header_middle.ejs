@@ -1,0 +1,197 @@
+    <!--phần ẩn-->
+    <div id="hidden-md">
+
+    </div>
+
+    <!--nội dung phần slide-nav-->
+<div id="MySlidenav" class="slidenav">
+    <div class="top-menu-mobile">
+        <img src="images/logo/logo.png" alt="">
+    </div>
+
+    <ul class="content-menumb">
+
+        <% for(let i=0;i< info_navbar.length;i++){ %>
+            <% if(info_navbar[i].vitri==1){%>
+                <li>
+                    <a href=<%= info_navbar[i].link_url %>><%= info_navbar[i].Name_navbar %></a>
+                </li>
+            <% } %> 
+        <% } %> 
+    </ul>
+</div>
+<!--kết thúc nội dung phần slide-nav-->
+
+
+<!--nội dung phần header-top-->
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+
+                <!--phần header top left-->
+                <ul class="header-top-left il">
+                    <li>
+                        <span class="welcome-text">Chào mừng bạn đến với <%= info_shop.Dia_chi%></span>
+                    </li>
+                    <li class="header-top-left-email">
+                        <a href="#">
+                            Email: <%= info_shop.email%>
+                        </a>
+                    </li>
+                </ul>
+                <!--kết thúc phần header top left-->
+
+            </div>
+
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                <!--phần đăng nhập đăng kí-->
+                <ul class="header-top-right il">
+                    <% if(hoten!=''){%>
+                        <li>
+                            <i class="fa fa-user"></i>
+                            <a href='/account'  class="account_a">
+                                <span><%= hoten %> </span>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-lock"></i>
+                            <a href='/account/logout'  class="account_a">
+                                <span>Thoát</span>
+                            </a>
+                        </li>
+                    <%}else{%>
+                        <li>
+                            <i class="fa fa-user"></i>
+                            <a href='/account/register'  class="account_a">
+                                <span>Đăng kí </span>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-lock"></i>
+                            <a href='/account/login'  class="account_a">
+                                <span>Đăng nhập </span>
+                            </a>
+                        </li>
+                    <%} %> 
+                    
+
+                </ul>
+                <!--kết thúc phần đăng nhập đăng kí-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--kết thúc phần header-top -->
+
+
+<!--nội dung phần header-middle-->
+<div class="header-middle">
+    <div class="container">
+        <div class="row">
+
+            <!--phần menu-bar-mobile-->
+            <div id="menu-bar" class="menu-bar-mobile">
+                <img src="images/icon-menu-mobile/icon-mobile-menu.png" alt="">
+            </div>
+            <!--kết thúc phần menu-bar-mobile-->
+
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                <!--phần logo-->
+                <div class="logo">
+                    <% let link=info_navbar[0].link_url %> 
+                    <a href=<%= link %> >
+                        <img src="images/logo/logo.png" alt="">
+                    </a>
+                </div>
+                <!--kết thúc phần logo-->
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <!--phần tìm kiếm-->
+                <form action="/search?" method="GET" class="hm-searchbox">
+                    <input name="search" type="text" placeholder="Enter your search key ..." autocomplete="off">
+                    <button class="li-btn" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <!--kết thúc phần tìm kiếm-->
+            </div>
+
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <!--phần header-middle-right-->
+                <div class="header-middle-right">
+
+                    <!--phần thông tin sô điện thoại-->
+                    <div class="info-phone">
+                        <div class="img-hotline">
+                            <i class="fa fa-phone"></i>
+                        </div>
+
+                        <div class="text-hotline">
+                            Gọi đặt hàng:
+                        </div>
+
+                        <div class="phone-order"><%= info_shop.So_dien_thoai%></div>
+                    </div>
+                    <!--kết thúc phần thông tin sô điện thoại-->
+
+                    <!--phần giỏ hàng-->
+                    <div class="cart-containt">
+                        <div class="heading-cart">
+                            <a class="bg-cart" href="/cart" title="Giỏ hàng">
+                                <% let soluongmua=0;let soluongsanpham=0 %> 
+                                <% if(hoten==''){%>
+                                    
+                                    <% if(count_namesp[0]['sum(soluongmua)']==null){%>
+                                        <% 
+                                            soluongmua=0;
+                                            soluongsanpham=0;
+                                        %> 
+                                    <%}else{%>
+                                        <% 
+                                            soluongmua=count_namesp[0]['sum(soluongmua)'];
+                                            soluongsanpham=count_namesp[0]['count(*)'];
+                                        %> 
+                                    <%} %> 
+                                <%}else{%>
+                                    <% if(count_namesp[0]['sum(soluongmua)']==null){%>
+                                        <% 
+                                            soluongmua=0;
+                                            soluongsanpham=0;
+                                        %> 
+                                    <%}else{%>
+                                        <% 
+                                            soluongmua=count_namesp[0]['sum(soluongmua)'];
+                                            soluongsanpham=count_namesp[0]['count(*)'];
+                                        %> 
+                                    <%} %> 
+                                <%} %> 
+                                <i class="fa fa-shopping-bag">
+                                    <span id="soluongdamua" class="count-item"><%= soluongmua %> </span>
+                                </i>
+
+                                <span class="block-small-cart">
+                                    <span class="text-giohang">Giỏ hàng</span>
+
+                                    <span class="block-count-pr">(<span id="soluongsanphamdamua" class="count_item count_item_pr"><%= soluongsanpham %></span>) sản phẩm </span>
+                                </span>
+
+                            </a>
+                        </div>
+                    </div>
+                    <!--kết thúc phần giở hàng-->
+                </div>
+                <!--kết thúc phần header-middle-right-->
+            </div>
+
+        </div>
+    </div>
+
+    
+</div>
+<!--kết thúc phần header middle-->
+
+
+
+<script src="/javascripts/mobile.js"></script>

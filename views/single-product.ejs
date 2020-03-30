@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= info_shop.Ten_shop %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="stylesheets/hidden_md-slide_nav-header_top-header_middle.css">
+    <link rel="stylesheet" href="stylesheets/danh-muc-san-pham.css">
+    <link rel="stylesheet" href="stylesheets/nav-bar-item.css">
+    <link rel="stylesheet" href="stylesheets/phan_header_navber_conlai.css">
+    <link rel="stylesheet" href="stylesheets/thanhdieuhuong.css">
+    <link rel="stylesheet" href="stylesheets/single-product.css">
+  </head>
+  <body>
+    <!--phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <% include partials-layout/hidden_md-slide_nav-header_top-header_middle %>
+    <!--kết thúc phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <!--phần header-nav-->
+    <div class="header-navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <!--phần danh mục sản phẩm-->
+                    <% include partials-layout/danh-muc-san-pham %>
+                    <!--kết thúc phần danh mục sản phẩm-->
+                </div>
+
+                <div class="col-lg-9">
+                    <!--phần navbar-item-->
+                    <% include partials-layout/nav-bar-item %>
+                    <!--kết thúc phần navbar-item-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần header-nav-->
+    <% 
+        let ten_thuong_hieu=info_data[0].ten_thuong_hieu;
+        let ten_san_pham=info_data[0].ten_san_pham;
+        let mota_san_pham=info_data[0].mota;
+        let hinh_anh_san_pham=info_data[0].hinhanh;
+        let gia=info_data[0].gia;
+        let gia_moi=info_data[0].giamoi;
+        let soluong=info_data[0].soluong;
+        let gioi_thieu=info_data[0].gioi_thieu;
+        let rating_tbsp=info_data[0].rating_tbsp;
+        let id_sanpham=info_data[0].id_sanpham;
+    %> 
+    <!--phần thanh hiển thị điều hướng-->
+    <section class="bread-crumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--nội dung thanh điều hướng-->
+                        <ul class="breadcrumb">
+                            <li class="home">
+                                <span>Trang chủ</span>
+                                <span><i class="fa">/</i></span>
+                            </li>
+    
+                            <li>
+                                <span class="sp"><%= ten_san_pham %> </span>
+                            </li>
+                        </ul>
+                        <!-- kết thúc nội dung thanh điều hướng-->
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!--kết thúc phần thanh hiển thị điều hướng-->
+    <!--phần thông tin sản phẩm-->
+    <section class="product">
+        <div class="container">
+            <div class="main-product-page">
+                <div class="row">
+                    <div class="col-xl-9 col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-xs-12  col-md-5 col-lg-5">
+                                <div class="product-detail-left">
+                                    <img src=<%= hinh_anh_san_pham %>  alt="">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-7 col-lg-7">
+                                <!--phần thông tin-->
+                                <div class="details-title">
+                                    <h1 class="title-product"><%= ten_san_pham %></h1>
+                                    <div class="group-status">
+                                        <span class="first_status">
+                                            Thương hiệu: 
+                                            <span class="status_name"><%= ten_thuong_hieu %></span>
+                                        </span>
+
+                                        <span class="first_status">
+                                            <span class="space">  |  </span>
+                                            Tình trạng:
+                                            <%if(soluong>0){%>
+                                                <span class="status_name availabel">Còn hàng</span>
+                                            <% }else{%>
+                                                
+                                                <span class="status_name availabel">Hết hàng</span>
+                                            <%}%>    
+                                              
+                                            
+                                        </span>
+                                    </div>
+                                </div>
+                                <!--kết thúc phần thông tin-->
+                                
+                                <!--phần đánh giá sao-->
+                                <!--phần đánh giá sao-->
+                                <div class="bizweb-product-reviews-star" title="Tuyệt vời">
+                                    <% let dem=0 %> 
+                                    <% for(let j=1;j<=Math.floor(rating_tbsp);j++){%>
+                                        <i style="color: #ff5622;" class="fa fa-star"></i>
+                                        <% dem++ %>
+                                    <% } %>  
+                                    <% if(rating_tbsp-Math.floor(rating_tbsp)>=0.5){%>
+                                        <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                                        <% dem++ %>
+                                    <% } %> 
+                                    <% for(let k=1;k<=5-dem;k++){%>
+                                        <i style="color: #ff5622;" class="fa fa-star-o"></i>
+                                    <%} %>  
+                                </div>
+                                <!--kết thúc phần đánh giá sao-->
+                                
+                                <!--kết thúc phần đánh giá sao-->
+
+                                <!--phần giá tiền-->
+                                <% if(gia_moi>0){%>
+                                        
+                                    <div class="price-box">
+                                        <span class="special-price">
+                                            <span class="product-price" itemprop="price"><%= gia_moi.toLocaleString() %>Đ </span>
+                                        </span>
+                                        <span class="old-price">
+                                            <del class="product-price-old" itemprop="priceSpecification"><%= gia.toLocaleString() %>Đ</del>
+                                        </span>
+                                    </div>
+                                <% }else{%>
+                                    <div class="price-box">
+                                        <span class="special-price">
+                                            <span class="product-price" itemprop="price"><%= gia.toLocaleString() %>Đ </span>
+                                        </span>
+                                    </div>    
+                                <% } %> 
+
+                                <!--kết thúc phần giá tiền-->
+
+                                <!--phần mô tả-->
+                                <div class="product_description">
+                                    <p>
+                                        <strong><%= ten_san_pham %>:</strong>
+                                        <%= mota_san_pham %>
+                                    </p>
+
+                                    <div class="see-detail">[Xem tiếp]</div>
+                                </div>
+                                <!--kết thúc phần mô tả-->
+
+                                <!--form group số lượng và thêm giỏ hàng-->
+                                <div class="form-group">
+                                    <div class="custom-btn-number">
+                                        <button class="btn_num num1" onclick="tru(qtym)">-</button>
+                                        <input type="text" id="qtym" name="quantity" value="1" onkeypress="validate(event,this)" class="prd_quantity">
+                                        <button class="btn_num num2" onclick="cong(qtym)">+</button>
+                                    </div>
+
+                                    <div class="button_actions">
+                                        <%if(soluong>0){%>
+                                            <button id="btn_check_count" type="button" class="btn btn-lg btn_buy">Mua hàng</button>
+                                        <% }else{%>
+                                            
+                                            <button type="button" class="btn btn-lg btn_buy disabled">Mua hàng</button>
+                                        <%}%>    
+                                        
+                                    </div>
+                                </div>
+                                <script src="javascripts/valid_so_luong_san_pham.js"></script>
+                                <div id="thongbao_check">
+                                    
+                                </div>
+                                <!--kết thúc form group số lượng và thêm giỏ hàng-->
+                                
+                            </div>
+                        </div>
+
+                        <!--phần 2 tab-->
+                        <div class="block-tab-info">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#mota">Mô tả</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#danhgia">Đánh giá</a>
+                                </li>
+                            </ul>
+                            
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane container active" id="mota"><%= gioi_thieu %>  </div>
+                                <div class="tab-pane container fade" id="danhgia">
+                                    <div id="product-reviews-list">
+
+                                        <% for(let i=0;i<noidungdanhgia.length;i++){%>
+                                            <% 
+                                                let hovaten=noidungdanhgia[i].hovaten;
+                                                let tieude=noidungdanhgia[i].tieude;
+                                                let noidung=noidungdanhgia[i].noidung;
+                                                let ngaythang=noidungdanhgia[i].ngaythang;
+                                                let rating=noidungdanhgia[i].rating;   
+                                            %> 
+
+                                            <div class="media p-3 product-review">
+                                                <img src="images/user.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:20px;">
+                                                <div class="media-body">
+                                                    <div class="product-review-name">
+                                                        <%= hovaten %> 
+                                                    </div>
+                                                    <span class="product-review-star">
+                                                        <% let dem=0 %> 
+                                                        <% for(let j=1;j<=Math.floor(rating);j++){%>
+                                                            <i style="color: #ff5622;" class="fa fa-star"></i>
+                                                            <% dem++ %>
+                                                        <% } %>  
+                                                        <% if(rating-Math.floor(rating)>=0.5){%>
+                                                            <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                                                            <% dem++ %>
+                                                        <% } %> 
+                                                        <% for(let k=1;k<=5-dem;k++){%>
+                                                            <i style="color: #ff5622;" class="fa fa-star-o"></i>
+                                                        <%} %>  
+                                                    </span>
+                                                    <span class="product-review-time">
+                                                        <%= ngaythang %> 
+                                                    </span>
+
+                                                    <div class="product-review-header-title">
+                                                        <%= tieude %> 
+                                                    </div>
+
+                                                    <div class="product-review-header-content">
+                                                        <%= noidung %> 
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        <%} %> 
+                                        
+                                        <% if(count_dg[0]['count(*)']==0){%>
+                                            <div class="product-review-buton">
+                                                <!-- Button to Open the Modal -->
+                                                     <% if(cothedanhgia){%>
+                                                         <button type="button" class="btn-open-modal" data-toggle="modal" data-target="#myModal">
+                                                             Viết đánh giá
+                                                         </button>
+                                                     <%}else{%>
+                                                         <button type="button" class="btn-open-modal">
+                                                             <a style="color: white;" href="/account/login">Đăng nhập để đánh giá sản phẩm</a>
+                                                         </button>
+                                                     <%} %> 
+                                                     
+                                            </div>
+                                        <%}%>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <div class="modal-review-title">
+                                    <div class="modal-review-title-name">
+                                        Đánh giá sản phẩm
+                                    </div>
+                                    <div class="modal-review-star">
+                                        <i style="color: #ff5622;" data-alt="1" class="fa fa-star-o star"></i>
+                                        <i style="color: #ff5622;" data-alt="2" class="fa fa-star-o star"></i>
+                                        <i style="color: #ff5622;" data-alt="3" class="fa fa-star-o star"></i>
+                                        <i style="color: #ff5622;" data-alt="4" class="fa fa-star-o star"></i>
+                                        <i style="color: #ff5622;" data-alt="5" class="fa fa-star-o star"></i>
+                                    </div>
+                                </div>
+                            
+                                <button type="button" class="close close-modal" data-dismiss="modal">&times;</button>
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="tieude" placeholder="Tiêu đề">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" id="comment" placeholder="Nội dung"></textarea>
+                                      </div>
+                                </div>
+                        
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <div class="modal-review-footer">
+                                        <button data-id_sanpham="<%= id_sanpham %>" id="btn-submit-review" type="button" class="btn btn-primary" data-dismiss="modal">Gửi</button>
+                                    </div>
+                                </div>
+                        
+                            </div>
+                            </div>
+                        </div>
+                        <!--kết thúc phần 2 tab-->
+                    </div>
+                    <div class="col-xl-3 col-md-12 col-sm-12">
+                        <!--phần module right-->
+                        <div class="module_right">
+                            <!--phần quảng cáo dịch vụ-->
+                            <div class="module_service_details">
+                                <!--phần item chính-->
+                                <div class="item_service">
+                                    <div class="wrap_item">
+                                        <div class="content_service">
+                                            <img src="images/icon-service/productdetail-icon5.png" alt="">
+                                            <p>Giao hàng nhanh chóng</p>
+                                            <span>Chỉ trong vòng 24h đồng hồ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--kết thúc phần item chính-->
+
+                                <!--phần item chính-->
+                                <div class="item_service">
+                                    <div class="wrap_item">
+                                        <div class="content_service">
+                                            <img src="images/icon-service/productdetail-icon4.png" alt="">
+                                            <p>Sản phẩm chính hãng</p>
+                                            <span>Sản phẩm nhập khẩu 100%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--kết thúc phần item chính-->
+
+                                <!--phần item chính-->
+                                <div class="item_service">
+                                    <div class="wrap_item">
+                                        <div class="content_service">
+                                            <img src="images/icon-service/productdetail-icon3.png" alt="">
+                                            <p>Đổi trả cực kì dễ dàng</p>
+                                            <span>Đổi trả trong 2 ngày đầu tiên</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--kết thúc phần item chính-->
+
+                                <!--phần item chính-->
+                                <div class="item_service">
+                                    <div class="wrap_item">
+                                        <div class="content_service">
+                                            <img src="images/icon-service/productdetail-icon2.png" alt="">
+                                            <p>Mua hàng tiết kiệm</p>
+                                            <span>Tiết kiệm hơn từ 10% - 30%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--kết thúc phần item chính-->
+
+                                <!--phần item chính-->
+                                <div class="item_service">
+                                    <div class="wrap_item">
+                                        <div class="content_service">
+                                            <img src="images/icon-service/productdetail-icon1.png" alt="">
+                                            <p>Hotline mua hàng:</p>
+                                            <span>(024)98657868</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--kết thúc phần item chính-->
+                            </div>
+                             <!--kết thúc phần quảng cáo dịch vụ-->
+
+                            <!--phần gợi ý sản phẩm-->
+                            <div class="module_best_sale_product">
+
+                                <!--phần tiêu đề-->
+                                <div class="heading">
+                                    <div class="title-head">
+                                        Có thể bạn thích
+                                    </div>
+                                </div>
+                                <!--kết thúc phần tiêu đề-->
+
+
+                                <!--phần item-->
+                                <% for(let i=0;i<list_data_sanpham.length;i++){%>
+                                    <% 
+                                        let tensanpham=list_data_sanpham[i].ten_san_pham;
+                                        let hinhanh=list_data_sanpham[i].hinhanh;
+                                        let gia=list_data_sanpham[i].gia;
+                                        let giamoi=list_data_sanpham[i].giamoi;
+                                        let linksanpham='/chitietsanpham?id='+list_data_sanpham[i].id_sanpham;          
+                                    %> 
+                                    <div class="sale_off_today">
+                                        <div class="item-small">
+                                            <div class="product-mini-item">
+                                                <a class="product-img" href="<%= linksanpham %>">
+                                                    <img src="<%= hinhanh %>" alt="">
+                                                </a>
+    
+                                                <div class="product-info">
+                                                    <h3 class="product-name">
+                                                        <a class="text1line" href="<%= linksanpham %>">
+                                                            <%= tensanpham %> 
+                                                        </a>
+                                                    </h3>
+                                                    
+                                                    <% if(giamoi==0){%>
+                                                        <div class="price-box">
+                                                            <span class="price product-price">
+                                                                <%= gia.toLocaleString() %>Đ
+                                                            </span>
+                                                        </div>
+                                                    <% }else{%>
+                                                        <div class="price-box">
+                                                            <span class="price product-price">
+                                                                <%= giamoi.toLocaleString() %>Đ
+                                                            </span>
+                        
+                                                            <span class="price product-price-old">
+                                                                <%= gia.toLocaleString() %>Đ
+                                                            </span>
+                                                        </div>
+                                                    <% } %> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <%} %> 
+                                
+                                
+                                <!--kết thúc phần item-->
+
+                                
+                            </div>
+                            <!--kết thúc phần gợi ý sản phẩm-->
+
+                        </div>
+                        <!--kết thúc phần module right-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--kết thúc phần thông tin sản phẩm-->
+
+    <!--phần gọi ý sản phẩm cùng loại-->
+    <div class="related-product">
+        <div class="container">
+            <div class="section_prd_feature">
+                <div class="heading">
+                    <div class="title-head">
+                        Sản phẩm cùng loại
+                    </div>
+                </div>
+
+                <!--phần list sản phẩm-->
+                <div class="row">
+                    <!-- Set up your HTML -->
+                    <div class="owl-carousel product-related">
+
+                        <% for(let i=0;i<list_goi_y_theo_noi_dung.length;i++){ %>
+                            <% 
+                                let tensanpham=list_goi_y_theo_noi_dung[i].ten_san_pham;
+                                let hinhanh=list_goi_y_theo_noi_dung[i].hinhanh;
+                                let gia=list_goi_y_theo_noi_dung[i].gia;
+                                let giamoi=list_goi_y_theo_noi_dung[i].giamoi;
+                                let linksanpham='/chitietsanpham?id='+list_goi_y_theo_noi_dung[i].id_sanpham;
+                                let rating_tbsp=list_goi_y_theo_noi_dung[i].rating_tbsp;
+                            %> 
+
+                            <div style="margin:5px" class="product-box">
+                                <div class="product-thumbnail">
+                                    <% if(giamoi!=0){%>
+                                        <% 
+                                            let phantramkhuyenmai=(giamoi/gia)*100;
+                                            phantramkhuyenmai=100-phantramkhuyenmai;                                                        
+                                        %> 
+                                        <span class="sale-off"><%= phantramkhuyenmai %>%</span>
+                                    <% } %> 
+
+                                    <a href=<%= linksanpham %>>
+                                        <img src=<%= hinhanh %> alt="">
+                                    </a>
+                                </div>
+
+                                <div class="product-info">
+                                    <h3 class="product-name">
+                                        <a href=<%= linksanpham %>>
+                                            <%= tensanpham %>
+                                        </a>
+                                    </h3>
+                                    <div class="reviews-product-grid">
+                                        <% let dem=0 %> 
+                                        <% for(let j=1;j<=Math.floor(rating_tbsp);j++){%>
+                                            <i style="color: #ff5622;" class="fa fa-star"></i>
+                                            <% dem++ %>
+                                        <% } %>  
+                                        <% if(rating_tbsp-Math.floor(rating_tbsp)>=0.5){%>
+                                            <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                                            <% dem++ %>
+                                        <% } %> 
+                                        <% for(let k=1;k<=5-dem;k++){%>
+                                            <i style="color: #ff5622;" class="fa fa-star-o"></i>
+                                        <%} %> 
+                                    </div>
+                                    
+                                    <% if(giamoi==0){%>
+                                        <div class="price-box">
+                                            <span class="price product-price">
+                                                <%= gia.toLocaleString() %>Đ
+                                            </span>
+                                        </div>
+                                    <% }else{%>
+                                        <div class="price-box">
+                                            <span class="price product-price">
+                                                <%= giamoi.toLocaleString() %>Đ
+                                            </span>
+
+                                            <span class="price product-price-old">
+                                                <%= gia.toLocaleString() %>Đ
+                                            </span>
+                                        </div>
+                                    <% } %> 
+                                    
+                                </div>
+                            </div>
+                        <% } %> 
+
+                    </div>
+                </div>
+                <!--kết thúc phần list sản phẩm-->
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần gợi ý sản phẩm cùng loại-->
+
+
+
+  <% include partials-layout/footer %>
+  <script src="assets/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+  <script src="javascripts/mobile.js"></script>
+  <script src="javascripts/single-product.js"></script>
+  </body>
+</html>

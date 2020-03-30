@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= info_shop.Ten_shop %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link rel="stylesheet" href="stylesheets/hidden_md-slide_nav-header_top-header_middle.css">
+    <link rel="stylesheet" href="stylesheets/danh-muc-san-pham.css">
+    <link rel="stylesheet" href="stylesheets/nav-bar-item.css">
+    <link rel="stylesheet" href="stylesheets/phan_header_navber_conlai.css">
+    <link rel="stylesheet" href="stylesheets/thanhdieuhuong.css">
+    <link rel="stylesheet" href="stylesheets/success.css">
+  </head>
+  <body>
+ 
+    <!--phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <% include partials-layout/hidden_md-slide_nav-header_top-header_middle %>
+    <!--kết thúc phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <!--phần header-nav-->
+    <div class="header-navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <!--phần danh mục sản phẩm-->
+                    <% include partials-layout/danh-muc-san-pham %>
+                    <!--kết thúc phần danh mục sản phẩm-->
+                </div>
+
+                <div class="col-lg-9">
+                    <!--phần navbar-item-->
+                    <% include partials-layout/nav-bar-item %>
+                    <!--kết thúc phần navbar-item-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần header-nav-->
+
+    <!--phần thanh hiển thị điều hướng-->
+    <section class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--nội dung thanh điều hướng-->
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <span>Trang chủ</span>
+                            <span><i class="fa">/</i></span>
+                        </li>
+
+                        <li>
+                            <span class="sp">Not Found</span>
+                        </li>
+                    </ul>
+                    <!-- kết thúc nội dung thanh điều hướng-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--kết thúc phần thanh hiển thị điều hướng-->
+    
+    <div class="container">
+        <div style="font-size: 120px;">
+            oops!!
+        </div>
+        <div style="font-size: 50px;color: green;">
+            Trang bạn tìm kiếm ko tồn tại :)
+        </div>
+    </div>
+
+  <% include partials-layout/footer %>
+  <script src="javascripts/mobile.js"></script>
+  </body>
+</html>

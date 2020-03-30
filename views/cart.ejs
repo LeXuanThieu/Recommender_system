@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= info_shop.Ten_shop %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link rel="stylesheet" href="stylesheets/hidden_md-slide_nav-header_top-header_middle.css">
+    <link rel="stylesheet" href="stylesheets/danh-muc-san-pham.css">
+    <link rel="stylesheet" href="stylesheets/nav-bar-item.css">
+    <link rel="stylesheet" href="stylesheets/phan_header_navber_conlai.css">
+    <link rel="stylesheet" href="stylesheets/thanhdieuhuong.css">
+    <% if(data_info.length>0){%>
+        <link rel="stylesheet" href="stylesheets/cart.css">
+    <%}%>
+  </head>
+  <body>
+ 
+    <!--phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <% include partials-layout/hidden_md-slide_nav-header_top-header_middle %>
+    <!--kết thúc phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <!--phần header-nav-->
+    <div class="header-navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <!--phần danh mục sản phẩm-->
+                    <% include partials-layout/danh-muc-san-pham %>
+                    <!--kết thúc phần danh mục sản phẩm-->
+                </div>
+
+                <div class="col-lg-9">
+                    <!--phần navbar-item-->
+                    <% include partials-layout/nav-bar-item %>
+                    <!--kết thúc phần navbar-item-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần header-nav-->
+
+    <!--phần thanh hiển thị điều hướng-->
+    <section class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--nội dung thanh điều hướng-->
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <span>Trang chủ</span>
+                            <span><i class="fa">/</i></span>
+                        </li>
+
+                        <li>
+                            <span class="sp">Giỏ hàng </span>
+                        </li>
+                    </ul>
+                    <!-- kết thúc nội dung thanh điều hướng-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--kết thúc phần thanh hiển thị điều hướng-->
+    <div id='cart-content'>
+        <% if(data_info.length>0){%>
+            <div class="container">
+                <!--phần các sản phẩm trong giỏ hàng-->
+                <table class="table oocommerce-cart-form__contents">
+                    <thead>
+                      <tr>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tạm tính</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% var tonggiacacsanpham=0; %> 
+                        <% for(let i=0;i<data_info.length;i++){%>
+                            <% 
+                                let giasanpham=0;
+                                let tensanpham=data_info[i].ten_san_pham;
+                                let hinhanh=data_info[i].hinhanh;
+                                let gia=data_info[i].gia;
+                                let giamoi=data_info[i].giamoi;
+                                let soluongmua=data_info[i].soluongmua;
+                                let idgiohang=data_info[i].id;
+                                if(giamoi!=0)
+                                {
+                                    giasanpham=giamoi;
+                                }
+                                else
+                                {
+                                    giasanpham=gia;
+                                }
+                                tonggiacacsanpham+=giasanpham*soluongmua;
+                            %> 
+    
+                            <tr id='gh<%= idgiohang %>' class="woocommerce-cart-form__cart-item">
+                                <td class="remove-product">
+                                    <div class="remove product-margin-20-0" data-id="<%= idgiohang %>" >x</div>
+                                </td>
+                                <td class="image-product">
+                                    <img src="<%= hinhanh %> " alt="">
+                                </td>
+                                <td class="product-name reponsive_mb" data-title="Sản phẩm">
+                                    <div class="product-margin-20-0"><%= tensanpham %> </div>
+                                </td>
+                                <td class="product-price reponsive_mb"data-title="Giá">
+                                    <div class="product-margin-20-0"><%= giasanpham.toLocaleString() %> VNĐ</div>
+                                </td>
+                                <td class="product-quantity reponsive_mb" data-title="Số lượng" >
+                                    <div class="product-margin-20-0"><%= soluongmua %> </div>
+                                </td>
+                                <td class="product-subtotal reponsive_mb" data-title="Tạm tính" >
+                                    <div class="product-margin-20-0"><%= (giasanpham*soluongmua).toLocaleString() %> VNĐ </div>
+                                </td>
+                            </tr>
+                        <%} %> 
+                      
+        
+                    </tbody>
+                  
+                </table>
+                <!--kết thúc phần các sản phẩm trong giỏ hàng-->
+        
+                <!--phần tính tổng-->
+        
+        
+                <!--phần tổng giá các sản phẩm trong giỏ hàng-->
+                <div class="cart-collaterals">
+                    <div class="cart-totals">
+                        <h2>Cộng giỏ hàng</h2>
+        
+                        <table class="table oocommerce-cart-form__contents">
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Tạm tính</th>
+                                    <td style="color: #ff5622;" data-title="Tạm tính">
+                                        <span class="woocommerce-Price-amount amount"><%= tonggiacacsanpham.toLocaleString()%>&nbsp;
+                                            <span class="woocommerce-Price-currencySymbol">VNĐ</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="cart-subtotal">
+                                    <th>Tổng</th>
+                                    <td style="color: #ff5622;" data-title="Tạm tính">
+                                        <span class="woocommerce-Price-amount amount"><%= tonggiacacsanpham.toLocaleString()%>&nbsp;
+                                            <span class="woocommerce-Price-currencySymbol">VNĐ</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+        
+                        <div class="wc-proceed-to-checkout">
+                            <a href="/checkcount"><button type="button" class="btn btn-danger">Tiến hành thanh toán</button></a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!--kết thúc phần tổng giá cá sản phẩm trong giỏ hàng-->
+            </div>
+        <%}else{%>
+            <div class="container">
+                <div style="padding:30px;background-color:white">
+                    <span style="font-weight: 700;font-size: 20px;">Giỏ hàng của bạn</span>
+                    <span>Không có sản phẩm nào trong giỏ hàng. Quay lại <a style="color: #ff5622;" href="/">cửa hàng</a> để tiếp tục mua sắm.</span>
+                </div>
+    
+            </div>
+        <%}%>
+    </div>
+    
+
+
+  <% include partials-layout/footer %>
+  <script src="javascripts/mobile.js"></script>
+  <% if(data_info.length>0){%>
+    <script src="javascripts/cart_js.js"></script>
+  <% } %> 
+  </body>
+</html>

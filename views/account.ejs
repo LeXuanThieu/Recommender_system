@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= info_shop.Ten_shop %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link rel="stylesheet" href="stylesheets/hidden_md-slide_nav-header_top-header_middle.css">
+    <link rel="stylesheet" href="stylesheets/danh-muc-san-pham.css">
+    <link rel="stylesheet" href="stylesheets/nav-bar-item.css">
+    <link rel="stylesheet" href="stylesheets/phan_header_navber_conlai.css">
+    <link rel="stylesheet" href="stylesheets/thanhdieuhuong.css">
+    <link rel="stylesheet" href="stylesheets/account.css">
+  </head>
+  <body>
+ 
+    <!--phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <% include partials-layout/hidden_md-slide_nav-header_top-header_middle %>
+    <!--kết thúc phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <!--phần header-nav-->
+    <div class="header-navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <!--phần danh mục sản phẩm-->
+                    <% include partials-layout/danh-muc-san-pham %>
+                    <!--kết thúc phần danh mục sản phẩm-->
+                </div>
+
+                <div class="col-lg-9">
+                    <!--phần navbar-item-->
+                    <% include partials-layout/nav-bar-item %>
+                    <!--kết thúc phần navbar-item-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần header-nav-->
+
+    <!--phần thanh hiển thị điều hướng-->
+    <section class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--nội dung thanh điều hướng-->
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <span>Trang chủ</span>
+                            <span><i class="fa">/</i></span>
+                        </li>
+
+                        <li>
+                            <span class="sp">Tài khoản </span>
+                        </li>
+                    </ul>
+                    <!-- kết thúc nội dung thanh điều hướng-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--kết thúc phần thanh hiển thị điều hướng-->
+    
+    <!--phần thông tin tài khoản-->
+
+    <div class="container">
+        <div class="row">
+            <% if(alert==1){%>
+                <div class="col-md-12">
+                    <div class="alert alert-success">
+                       Thay đổi thông tin thành công
+                      </div>
+                </div>
+            <%}if(alert==2){%>
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        Thay đổi thất bại
+                    </div>
+                </div>
+            <%} %> 
+            <div class="col-lg-6">
+                <div class="title-head-account">
+                    Sửa thông tin cá nhân
+                </div>
+                <form class="form-edit" action="/account" method="POST">
+                    <div class="form-group">
+                        <label class="user-edit-text" for="hovaten">Họ và tên *</label>
+                        <input name="hovaten" type="text" class="form-control" id="hovaten" placeholder="Nhập họ tên mới" value="<%= listdata[0].hovaten %>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="user-edit-text" for="sodienthoai">Số điện thoại *</label>
+                        <input name="sodienthoai" type="text" class="form-control" id="sodienthoai" placeholder="Nhập số điện thoại mới" value="<%= listdata[0].sodienthoai %>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="user-edit-text" for="email">Địa chỉ email *</label>
+                        <input name="diachiemail" type="text" class="form-control" id="email" value="<%= listdata[0].email %>" readonly="true">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Lưu thay đổi</button>
+                </form>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="title-head-account">
+                    Đổi mật khẩu
+                </div>
+                <form class="form-edit" action="/account/editpass" method="POST">
+                    <div class="form-group">
+                        <label class="user-edit-text" for="matkhaucu">Mật khẩu cũ *</label>
+                        <input name="passwordold" type="password" class="form-control" id="matkhaucu" placeholder="Nhập mật khẩu hiện tại" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="user-edit-text" for="matkhaumoi">Mật khẩu mới *</label>
+                        <input name='passwordnew' type="password" class="form-control" id="matkhaumoi" placeholder="Nhập mật khẩu mới" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="user-edit-text" for="xacnhanmatkhaumoi">Xác nhận mật khẩu mới *</label>
+                        <input type="password" class="form-control" id="xacnhanmatkhaumoi" placeholder="Nhập lại mật khẩu mới" required>
+                    </div>
+                    <button id="btn-checkpass" type="submit" class="btn btn-danger ">Hoàn tất</button>
+                </form>
+            </div>
+        </div>
+        <div class="mg-20 table-responsive-tb">
+            <div class="title-head-account">
+                Thông tin đơn hàng
+            </div>
+            <table class="table table-bordered tb">
+                <thead>
+                  <tr>
+                    <th>Đơn hàng</th>
+                    <th>Ngày</th>
+                    <th>Địa chỉ</th>
+                    <th>Giá trị đơn hàng</th>
+                    <th>Tình trạng thanh toán</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0;i<list_hoadon.length;i++){%>
+                        <% 
+                            let mahoadon=list_hoadon[i].mahoadon;
+                            let ngaythang=list_hoadon[i].ngaythang;
+                            let tongtien=list_hoadon[i].tongtien.toLocaleString();
+                            let tinhtrangthanhtoan=list_hoadon[i].tinhtrangthanhtoan;
+                            let diachi=list_hoadon[i].diachi;
+                        %> 
+                    <tr>
+                        <td><%= mahoadon %> </td>
+                        <td><%= ngaythang %> </td>
+                        <td><%= diachi %> </td>
+                        <td><%= tongtien %> VNĐ </td>
+                        <td><%= tinhtrangthanhtoan %> </td>
+                      </tr>
+                    <%} %> 
+                  
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!--kết thúc phần thông tin tài khoản-->
+  <% include partials-layout/footer %>
+  <script src="javascripts/mobile.js"></script>
+  <script src="javascripts/ajax_account.js"></script>
+  </body>
+</html>

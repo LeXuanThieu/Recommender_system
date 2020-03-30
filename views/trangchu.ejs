@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= info_shop.Ten_shop %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="stylesheets/hidden_md-slide_nav-header_top-header_middle.css">
+    <link rel="stylesheet" href="stylesheets/danh-muc-san-pham.css">
+    <link rel="stylesheet" href="stylesheets/nav-bar-item.css">
+    <link rel="stylesheet" href="stylesheets/banner.css">
+    <link rel="stylesheet" href="stylesheets/phan_header_navber_conlai.css">
+    <link rel="stylesheet" href="stylesheets/index.css">
+  </head>
+  <body>
+    <!--phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <% include partials-layout/hidden_md-slide_nav-header_top-header_middle %>
+    <!--kết thúc phần tach file dùng chung hidden-md,slide-nav,header-top,header-middle-->
+    <!--phần header-nav-->
+    <div class="header-navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                    <!--phần danh mục sản phẩm-->
+                    <% include partials-layout/danh-muc-san-pham %>
+                    <!--kết thúc phần danh mục sản phẩm-->
+                </div>
+
+                <div class="col-lg-9">
+                    <!--phần navbar-item-->
+                    <% include partials-layout/nav-bar-item %>
+                    <!--kết thúc phần navbar-item-->
+
+                    <!--phần banner-->
+                    <% include partials-layout/banner %>
+                    <!--kết thúc phần banner-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--kết thúc phần header-nav-->
+
+    <!--phần xu hướng tìm kiếm sản phẩm-->
+    <section class="awe-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="li-section-title">
+                        <h2>
+                            <span>CÓ THỂ BẠN SẼ THÍCH</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Set up your HTML -->
+                <div class="owl-carousel product-active">
+                    <% for(let i=0;i<list_data_sanpham.length;i++){%>
+                        <% 
+                            let tensanpham=list_data_sanpham[i].ten_san_pham;
+                            let hinhanh=list_data_sanpham[i].hinhanh;
+                            let gia=list_data_sanpham[i].gia;
+                            let giamoi=list_data_sanpham[i].giamoi;
+                            let linksanpham='/chitietsanpham?id='+list_data_sanpham[i].id_sanpham;
+                            let rating_tbsp=list_data_sanpham[i].rating_tbsp;              
+                        %> 
+
+                        <div class="product-box">
+                            <div class="product-thumbnail">
+                                <% if(giamoi!=0){%>
+                                    <% 
+                                        let phantramkhuyenmai=(giamoi/gia)*100;
+                                        phantramkhuyenmai=100-phantramkhuyenmai;                                                        
+                                    %> 
+                                    <span class="sale-off"><%= phantramkhuyenmai %>%</span>
+                                <% } %> 
+    
+                                <a href=<%= linksanpham %>>
+                                    <img src=<%= hinhanh %> alt="">
+                                </a>
+                            </div>
+    
+                            <div class="product-info">
+                                <h3 class="product-name">
+                                    <a href=<%= linksanpham %>>
+                                        <%= tensanpham %>
+                                    </a>
+                                </h3>
+                                <div class="reviews-product-grid">
+                                    <% let dem=0 %> 
+                                    <% for(let j=1;j<=Math.floor(rating_tbsp);j++){%>
+                                        <i style="color: #ff5622;" class="fa fa-star"></i>
+                                        <% dem++ %>
+                                    <% } %>  
+                                    <% if(rating_tbsp-Math.floor(rating_tbsp)>=0.5){%>
+                                        <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                                        <% dem++ %>
+                                    <% } %> 
+                                    <% for(let k=1;k<=5-dem;k++){%>
+                                        <i style="color: #ff5622;" class="fa fa-star-o"></i>
+                                    <%} %> 
+                                </div>
+                                
+                                <% if(giamoi==0){%>
+                                    <div class="price-box">
+                                        <span class="price product-price">
+                                            <%= gia.toLocaleString() %>Đ
+                                        </span>
+                                    </div>
+                                <% }else{%>
+                                    <div class="price-box">
+                                        <span class="price product-price">
+                                            <%= giamoi.toLocaleString() %>Đ
+                                        </span>
+    
+                                        <span class="price product-price-old">
+                                            <%= gia.toLocaleString() %>Đ
+                                        </span>
+                                    </div>
+                                <% } %> 
+                                
+                            </div>
+                        </div>
+                    <%} %> 
+                     
+                </div>  
+            </div>
+        </div>
+
+
+        <div style="margin-top:20px" class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="li-section-title">
+                        <h2>
+                            <span>SẢN PHẨM CÓ LƯỢT XEM NHIỀU NHẤT</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Set up your HTML -->
+                <div class="owl-carousel product-active">
+                    <% for(let i=0;i<list_view_sanpham.length;i++){%>
+                        <% 
+                            let tensanpham=list_view_sanpham[i].ten_san_pham;
+                            let hinhanh=list_view_sanpham[i].hinhanh;
+                            let gia=list_view_sanpham[i].gia;
+                            let giamoi=list_view_sanpham[i].giamoi;
+                            let linksanpham='/chitietsanpham?id='+list_view_sanpham[i].id_sanpham;
+                            let rating_tbsp=list_view_sanpham[i].rating_tbsp;              
+                        %> 
+
+                        <div class="product-box">
+                            <div class="product-thumbnail">
+                                <% if(giamoi!=0){%>
+                                    <% 
+                                        let phantramkhuyenmai=(giamoi/gia)*100;
+                                        phantramkhuyenmai=100-phantramkhuyenmai;                                                        
+                                    %> 
+                                    <span class="sale-off"><%= phantramkhuyenmai %>%</span>
+                                <% } %> 
+    
+                                <a href=<%= linksanpham %>>
+                                    <img src=<%= hinhanh %> alt="">
+                                </a>
+                            </div>
+    
+                            <div class="product-info">
+                                <h3 class="product-name">
+                                    <a href=<%= linksanpham %>>
+                                        <%= tensanpham %>
+                                    </a>
+                                </h3>
+                                <div class="reviews-product-grid">
+                                    <% let dem=0 %> 
+                                    <% for(let j=1;j<=Math.floor(rating_tbsp);j++){%>
+                                        <i style="color: #ff5622;" class="fa fa-star"></i>
+                                        <% dem++ %>
+                                    <% } %>  
+                                    <% if(rating_tbsp-Math.floor(rating_tbsp)>=0.5){%>
+                                        <i style="color: #ff5622;" class="fa fa-star-half-full"></i>
+                                        <% dem++ %>
+                                    <% } %> 
+                                    <% for(let k=1;k<=5-dem;k++){%>
+                                        <i style="color: #ff5622;" class="fa fa-star-o"></i>
+                                    <%} %> 
+                                </div>
+                                
+                                <% if(giamoi==0){%>
+                                    <div class="price-box">
+                                        <span class="price product-price">
+                                            <%= gia.toLocaleString() %>Đ
+                                        </span>
+                                    </div>
+                                <% }else{%>
+                                    <div class="price-box">
+                                        <span class="price product-price">
+                                            <%= giamoi.toLocaleString() %>Đ
+                                        </span>
+    
+                                        <span class="price product-price-old">
+                                            <%= gia.toLocaleString() %>Đ
+                                        </span>
+                                    </div>
+                                <% } %> 
+                                
+                            </div>
+                        </div>
+                    <%} %> 
+                     
+                </div>  
+            </div>
+        </div>
+    </section>
+    <!--kết thúc phần xu hướng tìm kiếm sản phẩm-->
+
+    <!--phần tin tức-->
+    <section class="awe-section-tt">
+        <div class="aside-title">
+            Tin mới nhất
+        </div>
+        <div class="container">
+            <div class="owl-carousel tintuc">
+                <% for(let i=0;i<list_tintuc.length;i++){%>
+                    <% 
+                        let id=list_tintuc[i].id;
+                        let duonglink='/tin-tuc?id='+id;
+                        let tieude=list_tintuc[i].tieude;
+                        let gioithieu=list_tintuc[i].gioithieu;
+                        let hinhanh=list_tintuc[i].hinhanh;
+                        let thoigian=list_tintuc[i].thoigian;
+
+                    %> 
+                     <div class="tt-item">
+                        <a class="tt-item-img" href="<%= duonglink %>"><img src="<%= hinhanh %>" title="<%= tieude %>"></a>
+    
+                        <div class="time">
+                            <%= thoigian %> 
+                        </div>
+                        <div class="title_tt_name">
+                            <a href="<%= duonglink %>"><%= tieude %> </a>
+                        </div>
+                        <div class="content_nd">
+                            <%= gioithieu %> 
+                        </div>
+                    </div>
+                <%} %> 
+               
+
+            </div>
+
+            <a class="link-tt-a" href="/tin-tuc">
+                <div class="btn-tt">
+                    Xem thêm
+                </div>
+            </a>
+        </div>
+
+    </section>
+    <!--kết thúc phần tin tức-->
+    <section class="section-srv">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="serviver-ct">
+                        <img class="img_srv" src="images/service-icon/srv_1.png" alt="">
+                        <div class="content_srv">
+                            <div class="title_srv">
+                                Giao hàng cực nhanh
+                            </div>
+                            <div class="content_service">
+                                Miễn phí với đơn hàng trị giá trên 800.000đ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="serviver-ct">
+                        <img class="img_srv" src="images/service-icon/srv_2.png" alt="">
+                        <div class="content_srv">
+                            <div class="title_srv">
+                                Mua hàng siêu tiết kiệm
+                            </div>
+                            <div class="content_service">
+                                Tiết kiệm hơn từ 10% - 30% so thị trường
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="serviver-ct">
+                        <img class="img_srv" src="images/service-icon/srv_3.png" alt="">
+                        <div class="content_srv">
+                            <div class="title_srv">
+                                Sản phẩm chính hãng 100%
+                            </div>
+                            <div class="content_service">
+                                Sản phẩm được nhập khẩu chính hãng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  <% include partials-layout/footer %>
+  <script src="assets/OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+  <script src="javascripts/index.js"></script>
+  <script src="javascripts/mobile.js"></script>
+  </body>
+</html>

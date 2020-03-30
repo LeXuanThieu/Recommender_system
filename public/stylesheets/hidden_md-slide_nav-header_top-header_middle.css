@@ -1,0 +1,395 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #eff0f3;
+}
+a{
+    text-decoration: none !important;
+}
+a:hover
+{
+    text-decoration: none !important;
+}
+ ul
+ {
+     list-style-type: none !important;
+     margin: 0;
+     padding: 0;
+ }
+ @media (max-width: 991px)
+{
+    .open-sidebar-nav
+    {
+        visibility: visible !important;
+        transform: translateX(0px) !important;
+    }
+    .open-opacity-mb
+    {
+        content: " ";
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        position: fixed;
+        top: 0px !important;
+        left: 0px;
+        z-index: 10;
+    }
+}
+
+    
+/*phần slider-mobile*/
+@media (min-width: 992px)
+{
+    .slidenav
+    {
+        display: none;
+    }
+}
+@media (max-width: 991px)
+{
+
+    .slidenav
+    {
+        position: fixed;
+        width: 280px;
+        height: 100%;
+        background-color: #ff5622;
+        overflow-x: hidden;
+        z-index: 99;
+        box-shadow: 0px 2px 11px 1px rgba(168,168,168,0.54);
+        transition: all 0.35s ease;
+        transform: translateX(-280px);
+        visibility: hidden;
+    }
+    .top-menu-mobile
+    {
+        margin: 20px;
+        text-align: center;
+    }
+    .content-menumb
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content-menumb li
+    {
+        padding: 10px;
+        border-bottom: 1px solid #ffffff;
+    }
+    .content-menumb li a
+    {
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .content-menumb li a:hover
+    {
+        text-decoration: none;
+    }
+}
+/*kết thúc phần slider-mobile*/
+
+
+
+ /*phần header-top*/
+ .header-top
+ {
+     line-height: 40px;
+     background: #f34111;
+ }
+ /*kết thúc phần header-top*/
+
+ /*phần header-top-left*/
+ .il li
+ {
+     display: inline;
+ }
+ 
+ .welcome-text
+ {
+     color: #ffffff;
+ }
+ .header-top-left-email
+ {
+     margin-left: 8px;
+ }
+ .il a
+ {
+     color: #ffffff;
+     position: relative;
+ }
+ .il a:hover
+ {
+     color: #ffffff;
+ }
+ .header-top-left-email a::before
+ {
+     content: "";
+     position: absolute;
+     width: 1px;
+     background: #fff;
+     height: 16px;
+     top: 4px;
+     left: -7px;
+ }
+
+
+ @media(max-width:1200px)
+ {
+    .header-top-left
+    {
+        text-align: center;
+    }
+ }
+ @media (max-width: 576px)
+{
+    .header-top-left
+    {
+        display: none;
+    }
+}
+/*kết thúc phần header-top-left*/
+
+
+/*phần header-top-right*/
+ .header-top-right
+ {
+     text-align: right;
+ }
+ .header-top-right i
+ {
+     color: #ffffff;
+ }
+ .header-top-right .account_a
+ {
+     margin: 0 20px 0 8px;
+ }
+
+ @media (max-width: 1200px)
+ {
+    .header-top-right
+    {
+        text-align: center;
+    }
+ }
+
+ /*kết thúc phần header-top-right*/
+ 
+
+ /* phần header- middle*/
+ .header-middle
+ {
+     padding: 20px 0px 15px 0;
+     background: #ff5622;
+ }
+
+
+
+ /*phần menu-bar-mobile*/
+ .menu-bar-mobile
+ {
+     display: none;
+ }
+ .menu-bar-mobile img
+ {
+     width: 30px;
+ }
+
+ /*phần logo*/
+ @media (max-width: 991px)
+{
+    .logo
+    {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .menu-bar-mobile
+    {
+        display: inline-block;
+        position: absolute;
+        top: 112px;
+        margin-left: 20px;
+        cursor: pointer;
+        z-index: 1;
+    }
+}
+@media(max-width:767px)
+{
+    .menu-bar-mobile
+    {
+        top: 147px;
+    }
+}
+@media (max-width: 576px)
+{
+    .menu-bar-mobile
+    {
+        top: 73px;
+    }
+}
+/*kết thúc phần logo*/
+ /*kết thúc phần menu-bar-mobile*/
+ 
+ /*phần tìm kiếm*/
+ .hm-searchbox {
+     position: relative;
+     background: #fff;
+     border-radius: 5px;
+     border: 1px solid #e1e1e1;
+     min-width: 500px;
+     height: 40px;
+     float: left;
+ }
+ .hm-searchbox input {
+     font-size: 13px;
+     color: #a5a5a5;
+     height: 40px;
+     background: transparent;
+     border: none;
+     width: 100%;
+     padding: 0 60px 0 33px;
+     outline: none;
+ }
+ button.li-btn {
+     border: none;
+     background: #ff5622;
+     color: #242424;
+     font-size: 20px;
+     width: 45px;
+     border-radius: 0 2px 2px 0;
+     height: 35px;
+     line-height: 33px;
+     position: absolute;
+     right: 2px;
+     top: 1px;
+     transition: all 0.3s ease-in-out;
+     cursor: pointer;
+     outline: none;
+ }
+ .li-btn i
+ {
+     color: #ffffff;
+ }
+ @media (max-width: 991px)
+{
+    .hm-searchbox
+    {
+        min-width:100%;
+    }
+}
+ /* kết thúc phần tìm kiếm*/
+
+
+ /*phần .header-middle-right*/
+ .header-middle-right
+ {
+     margin-top: -4px;
+     position: relative;
+ }
+ 
+ /*phần thông tin số điện thoại*/
+ .info-phone
+ {
+     float: left;
+ }
+ .info-phone .img-hotline {
+    position: absolute;
+    top: 13px;
+    left: -22px;
+ }
+ .info-phone .img-hotline i 
+ {
+     font-size: 24px;
+     color: #fff;
+ }
+ 
+ .text-hotline,.phone-order
+ {
+     color: #ffffff;
+ }
+
+
+ @media(max-width:1200px)
+ {
+    .info-phone
+    {
+        display: none;
+    }
+ }
+  /*kết thúc phần thông tin số điện thoại*/
+
+  /*phần giỏ hàng*/
+ .cart-containt
+ {
+     float: right;
+ }
+ 
+ 
+ .heading-cart
+ {
+     position: relative;
+ }
+ 
+ .heading-cart .bg-cart .count-item
+ {
+     top: 0;
+     line-height: 18px;
+     left: 17px;
+     background: yellow;
+     width: 24px;
+     text-align: center;
+     height: 18px;
+     color: #000;
+     border-radius: 10px;
+     position: absolute;
+     font-size: 15px;
+ }
+ 
+ .heading-cart i
+ {
+     color: #ffffff;
+     font-size: 30px;
+     position: relative;
+     top: 7px;
+     right: 6px;
+ }
+ 
+ .block-small-cart
+ {
+     float: right;
+ }
+ .block-small-cart .text-giohang,.block-count-pr{
+     display: block;
+ }
+ 
+ .heading-cart .bg-cart .text-giohang,.block-count-pr
+ {
+     color: #ffffff;
+     text-align: center;
+ }
+
+ 
+@media (max-width: 991px)
+{
+    .cart-containt
+    {
+        padding: 0;
+        right: 0px;
+        line-height: 24px;
+        position: absolute;
+        top: -102px;
+    }
+    .block-small-cart
+    {
+        display: none;
+    }
+}
+
+/*phần giỏ hàng*/
+
+/*kết thúc phần header-middle-right*/

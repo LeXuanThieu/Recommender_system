@@ -1,0 +1,23 @@
+.title-head-contact
+{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 30px;
+}
+.intro
+{
+    margin-top: 20px;
+}
+.intro p{
+    text-transform: uppercase;
+}
+.info_pm i{
+    background-color: #ff5622ed;
+    padding: 2px;
+    color: white;
+    border-radius: 5px;
+}
+.content_phone
+{
+    margin-left: 20px;
+}

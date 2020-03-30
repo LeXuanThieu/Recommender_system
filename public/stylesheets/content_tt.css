@@ -1,0 +1,21 @@
+.resizeimg
+{
+    display: block;
+    margin: 0px auto;
+    max-width: 660px;
+}
+.FmsArticleBoxStyle
+{
+    margin: 0px auto;
+}
+.FmsArticleBoxStyle-Content
+{
+    text-align: center;
+    font-style: italic;
+}
+.bold
+{
+    font-family: "NotoSans-Bold";
+    font-weight: 700;
+    font-size: 20px;
+}

@@ -1,0 +1,3 @@
+{
+    "ignore": ["mobile.js","pagination.js","sanpham_js.js","single-product.js","cart_js.js"]
+}

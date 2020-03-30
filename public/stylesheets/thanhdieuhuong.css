@@ -1,0 +1,38 @@
+/*phần thanh hiển thị điều hướng*/
+.bread-crumb
+{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+/*nội dung thanh điều hướng*/
+.bread-crumb .breadcrumb {
+    margin: 0;
+    font-size: 14px;
+    padding-left: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 0;
+    background-color: #eff0f3;
+}
+.bread-crumb .breadcrumb li {
+    display: inline;
+    font-family: 'Arial',sans-serif;
+}
+
+.bread-crumb .breadcrumb li>span {
+    color: #333;
+}
+.bread-crumb .breadcrumb li .sp {
+    display: inline;
+    color: #ff5622;
+}
+.bread-crumb .breadcrumb li span .fa {
+    color: #323c3f;
+    margin: 0px 7px;
+    font-weight: bold;
+}
+/*kết thúc nội dung thanh điều hướng*/
+/*kết thúc phần thanh hiển thị điều hướng*/
